@@ -409,8 +409,8 @@ where
             return;
         }
 
-        let mut start = first_visible.saturating_sub(visible_count * 2);
-        let mut end = start + visible_count * 5;
+        let mut start = first_visible.saturating_sub(visible_count * 20);
+        let mut end = start + visible_count * 50;
 
         if let Some(row_count) = row_count_opt {
             // Clamp end to row_count if we know it
