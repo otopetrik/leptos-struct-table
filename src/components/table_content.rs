@@ -543,7 +543,10 @@ where
             <For
                 each=move || {
                     with!(
-                        | loaded_rows, display_range | { let iter = loaded_rows[display_range
+                        | loaded_rows, display_range | {
+                        let mut display_range = display_range.clone();
+                        display_range.end = display_range.end.min(loaded_rows.len());
+                        let iter = loaded_rows[display_range
                         .clone()].iter().cloned().enumerate().map(| (i, row) | (i + display_range
                         .start, row)); if let Some(loading_row_display_limit) =
                         loading_row_display_limit { let mut loading_row_count = 0; iter.filter(| (_,
